@@ -6,15 +6,13 @@ namespace GildedRose.Tests
     [TestFixture]
     public class BackstagePassQuality
     {
-        private const string BackstageName = "Backstage passes to a TAFKAL80ETC concert";
-        
         private readonly QualityUpdater qualityUpdater = new QualityUpdater();
 
         [TestCase(11)]
         [TestCase(20)]
         public void BackstagePassQualityIncrease(int initialSellIn)
         {
-            Item myItem = new Item { Name = BackstageName, SellIn = initialSellIn, Quality = 20 };
+            Item myItem = new Item { Name = QualityUpdater.Backstage, SellIn = initialSellIn, Quality = 20 };
 
             this.qualityUpdater.UpdateQuality(new List<Item> { myItem });
 
@@ -29,7 +27,7 @@ namespace GildedRose.Tests
         [TestCase(6)]
         public void BackstagePassQualityIncreaseTwiceAsFast_When10DaysToTheSellIn(int initialSellIn)
         {
-            Item myItem = new Item { Name = BackstageName, SellIn = initialSellIn, Quality = 20 };
+            Item myItem = new Item { Name =  QualityUpdater.Backstage, SellIn = initialSellIn, Quality = 20 };
 
             this.qualityUpdater.UpdateQuality(new List<Item> { myItem });
 
@@ -43,7 +41,7 @@ namespace GildedRose.Tests
         [TestCase(1)]
         public void BackstagePassQualityIncreaseBy3AsFast_When5DaysToTheSellIn(int initialSellIn)
         {
-            Item myItem = new Item { Name = BackstageName, SellIn = initialSellIn, Quality = 20 };
+            Item myItem = new Item { Name =  QualityUpdater.Backstage, SellIn = initialSellIn, Quality = 20 };
 
             this.qualityUpdater.UpdateQuality(new List<Item> { myItem });
 
@@ -53,7 +51,7 @@ namespace GildedRose.Tests
         [Test]
         public void BackstagePassQualitySetTo0WhenSellInPassed()
         {
-            Item myItem = new Item { Name = BackstageName, SellIn = 0, Quality = 20 };
+            Item myItem = new Item { Name =  QualityUpdater.Backstage, SellIn = 0, Quality = 20 };
 
             this.qualityUpdater.UpdateQuality(new List<Item> { myItem });
 
