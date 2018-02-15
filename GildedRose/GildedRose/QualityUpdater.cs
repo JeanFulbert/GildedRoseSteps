@@ -12,15 +12,72 @@ namespace GildedRose
         {
             foreach (var item in items)
             {
-                if (item.Name != AgedBrie &&
-                    item.Name != Backstage)
+                UpdateQualityOf(item);
+            }
+        }
+
+        private static void UpdateQualityOf(Item item)
+        {
+            if (item.Name != AgedBrie &&
+                item.Name != Backstage)
+            {
+                if (item.Quality > 0)
                 {
-                    if (item.Quality > 0)
+                    if (item.Name != Sulfuras)
                     {
-                        if (item.Name != Sulfuras)
+                        item.Quality = item.Quality - 1;
+                    }
+                }
+            }
+            else
+            {
+                if (item.Quality < 50)
+                {
+                    item.Quality = item.Quality + 1;
+
+                    if (item.Name == Backstage)
+                    {
+                        if (item.SellIn < 11)
                         {
-                            item.Quality = item.Quality - 1;
+                            if (item.Quality < 50)
+                            {
+                                item.Quality = item.Quality + 1;
+                            }
                         }
+
+                        if (item.SellIn < 6)
+                        {
+                            if (item.Quality < 50)
+                            {
+                                item.Quality = item.Quality + 1;
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (item.Name != Sulfuras)
+            {
+                item.SellIn = item.SellIn - 1;
+            }
+
+            if (item.SellIn < 0)
+            {
+                if (item.Name != AgedBrie)
+                {
+                    if (item.Name != Backstage)
+                    {
+                        if (item.Quality > 0)
+                        {
+                            if (item.Name != Sulfuras)
+                            {
+                                item.Quality = item.Quality - 1;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        item.Quality = item.Quality - item.Quality;
                     }
                 }
                 else
@@ -28,58 +85,6 @@ namespace GildedRose
                     if (item.Quality < 50)
                     {
                         item.Quality = item.Quality + 1;
-
-                        if (item.Name == Backstage)
-                        {
-                            if (item.SellIn < 11)
-                            {
-                                if (item.Quality < 50)
-                                {
-                                    item.Quality = item.Quality + 1;
-                                }
-                            }
-
-                            if (item.SellIn < 6)
-                            {
-                                if (item.Quality < 50)
-                                {
-                                    item.Quality = item.Quality + 1;
-                                }
-                            }
-                        }
-                    }
-                }
-
-                if (item.Name != Sulfuras)
-                {
-                    item.SellIn = item.SellIn - 1;
-                }
-
-                if (item.SellIn < 0)
-                {
-                    if (item.Name != AgedBrie)
-                    {
-                        if (item.Name != Backstage)
-                        {
-                            if (item.Quality > 0)
-                            {
-                                if (item.Name != Sulfuras)
-                                {
-                                    item.Quality = item.Quality - 1;
-                                }
-                            }
-                        }
-                        else
-                        {
-                            item.Quality = item.Quality - item.Quality;
-                        }
-                    }
-                    else
-                    {
-                        if (item.Quality < 50)
-                        {
-                            item.Quality = item.Quality + 1;
-                        }
                     }
                 }
             }
