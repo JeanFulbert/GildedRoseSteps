@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using GildedRose.QualityUpdaters;
 
 namespace GildedRose
 {
@@ -8,105 +9,36 @@ namespace GildedRose
         public const string Backstage = "Backstage passes to a TAFKAL80ETC concert";
         public const string Sulfuras = "Sulfuras, Hand of Ragnaros";
         
+        private readonly AgedBrieQualityUpdater agedBrieQualityUpdater = new AgedBrieQualityUpdater();
+        private readonly BackstageQualityUpdater backstageQualityUpdater = new BackstageQualityUpdater();
+        private readonly SulfurasQualityUpdater sulfurasQualityUpdater = new SulfurasQualityUpdater();
+        private readonly NormalQualityUpdater normalQualityUpdater = new NormalQualityUpdater();
+        
         public void UpdateQuality(IList<Item> items)
         {
             foreach (var item in items)
             {
-                UpdateQualityOf(item);
+                this.UpdateQualityOf(item);
             }
         }
 
-        private static void UpdateQualityOf(Item item)
+        private void UpdateQualityOf(Item item)
         {
             if (item.Name == AgedBrie)
             {
-                UpdateAgedBrie(item);
+                this.agedBrieQualityUpdater.UpdateQuality(item);
             }
             else if (item.Name == Backstage)
             {
-                UpdateBackstage(item);
+                this.backstageQualityUpdater.UpdateQuality(item);
             }
             else if  (item.Name == Sulfuras)
             {
-                UpdateSulfuras(item);
+                this.sulfurasQualityUpdater.UpdateQuality(item);
             }
             else
             {
-                UpdateNormal(item);
-            }
-        }
-
-        private static void UpdateAgedBrie(Item item)
-        {
-            if (item.Quality < 50)
-            {
-                item.Quality = item.Quality + 1;
-            }
-
-            item.SellIn = item.SellIn - 1;
-
-            if (item.SellIn < 0)
-            {
-                if (item.Quality < 50)
-                {
-                    item.Quality = item.Quality + 1;
-                }
-            }
-        }
-
-        private static void UpdateBackstage(Item item)
-        {
-            if (item.Quality < 50)
-            {
-                item.Quality = item.Quality + 1;
-
-                if (item.SellIn < 11)
-                {
-                    if (item.Quality < 50)
-                    {
-                        item.Quality = item.Quality + 1;
-                    }
-                }
-
-                if (item.SellIn < 6)
-                {
-                    if (item.Quality < 50)
-                    {
-                        item.Quality = item.Quality + 1;
-                    }
-                }
-            }
-
-            item.SellIn = item.SellIn - 1;
-
-
-            if (item.SellIn < 0)
-            {
-                item.Quality = item.Quality - item.Quality;
-            }
-        }
-
-        private static void UpdateSulfuras(Item item)
-        {
-            // Do nothing because it's legen… wait for it …DARY !
-        }
-
-        private static void UpdateNormal(Item item)
-        {
-            if (item.Quality > 0)
-            {
-                item.Quality = item.Quality - 1;
-            }
-
-            item.SellIn = item.SellIn - 1;
-
-
-            if (item.SellIn < 0)
-            {
-                if (item.Quality > 0)
-                {
-                    item.Quality = item.Quality - 1;
-                }
+                this.normalQualityUpdater.UpdateQuality(item);
             }
         }
     }
