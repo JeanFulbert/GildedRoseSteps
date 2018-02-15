@@ -24,6 +24,16 @@ namespace GildedRose
                 {
                     item.Quality = item.Quality + 1;
                 }
+                
+                item.SellIn = item.SellIn - 1;
+                
+                if (item.SellIn < 0)
+                {
+                    if (item.Quality < 50)
+                    {
+                        item.Quality = item.Quality + 1;
+                    }
+                }
             }
             else if (item.Name == Backstage)
             {
@@ -47,6 +57,14 @@ namespace GildedRose
                         }
                     }
                 }
+                
+                item.SellIn = item.SellIn - 1;
+                
+
+                if (item.SellIn < 0)
+                {
+                    item.Quality = item.Quality - item.Quality;
+                }
             }
             else if  (item.Name == Sulfuras)
             {
@@ -57,42 +75,11 @@ namespace GildedRose
                 {
                     item.Quality = item.Quality - 1;
                 }
-            }
+                
+                item.SellIn = item.SellIn - 1;
 
 
-            if (item.Name == AgedBrie)
-            {
-                item.SellIn = item.SellIn - 1;
-            }
-            else if (item.Name == Backstage)
-            {
-                item.SellIn = item.SellIn - 1;
-            }
-            else if (item.Name == Sulfuras)
-            {
-            }
-            else
-            {
-                item.SellIn = item.SellIn - 1;
-            }
-
-            if (item.SellIn < 0)
-            {
-                if (item.Name == AgedBrie)
-                {
-                    if (item.Quality < 50)
-                    {
-                        item.Quality = item.Quality + 1;
-                    }
-                }
-                else if (item.Name == Backstage)
-                {
-                    item.Quality = item.Quality - item.Quality;
-                }
-                else if (item.Name == Sulfuras)
-                {
-                }
-                else
+                if (item.SellIn < 0)
                 {
                     if (item.Quality > 0)
                     {
