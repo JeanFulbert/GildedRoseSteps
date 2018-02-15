@@ -1,6 +1,6 @@
 ﻿namespace GildedRose.QualityUpdaters
 {
-    public class SulfurasQualityUpdater :IItemQualityUpdater
+    public class LegendaryQualityUpdater :IItemQualityUpdater
     {
         public void UpdateQuality(Item item)
         {

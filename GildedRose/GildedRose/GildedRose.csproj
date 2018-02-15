@@ -50,7 +50,7 @@
     <Compile Include="QualityUpdaters\BackstageQualityUpdater.cs" />
     <Compile Include="QualityUpdaters\IItemQualityUpdater.cs" />
     <Compile Include="QualityUpdaters\NormalQualityUpdater.cs" />
-    <Compile Include="QualityUpdaters\SulfurasQualityUpdater.cs" />
+    <Compile Include="QualityUpdaters\LegendaryQualityUpdater.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

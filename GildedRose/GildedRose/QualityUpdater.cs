@@ -9,10 +9,15 @@ namespace GildedRose
         public const string Backstage = "Backstage passes to a TAFKAL80ETC concert";
         public const string Sulfuras = "Sulfuras, Hand of Ragnaros";
         
-        private readonly AgedBrieQualityUpdater agedBrieQualityUpdater = new AgedBrieQualityUpdater();
-        private readonly BackstageQualityUpdater backstageQualityUpdater = new BackstageQualityUpdater();
-        private readonly SulfurasQualityUpdater sulfurasQualityUpdater = new SulfurasQualityUpdater();
         private readonly NormalQualityUpdater normalQualityUpdater = new NormalQualityUpdater();
+        
+        private readonly IDictionary<string, IItemQualityUpdater> qualityUpdaterByName =
+            new Dictionary<string, IItemQualityUpdater>
+            {
+                [AgedBrie] = new AgedBrieQualityUpdater(),
+                [Backstage] = new BackstageQualityUpdater(),
+                [Sulfuras] = new LegendaryQualityUpdater(),
+            };
         
         public void UpdateQuality(IList<Item> items)
         {
@@ -24,22 +29,13 @@ namespace GildedRose
 
         private void UpdateQualityOf(Item item)
         {
-            if (item.Name == AgedBrie)
+            IItemQualityUpdater qualityUpdater = this.normalQualityUpdater;
+            if (this.qualityUpdaterByName.ContainsKey(item.Name))
             {
-                this.agedBrieQualityUpdater.UpdateQuality(item);
+                qualityUpdater = this.qualityUpdaterByName[item.Name];
             }
-            else if (item.Name == Backstage)
-            {
-                this.backstageQualityUpdater.UpdateQuality(item);
-            }
-            else if  (item.Name == Sulfuras)
-            {
-                this.sulfurasQualityUpdater.UpdateQuality(item);
-            }
-            else
-            {
-                this.normalQualityUpdater.UpdateQuality(item);
-            }
+            
+            qualityUpdater.UpdateQuality(item);
         }
     }
 }
