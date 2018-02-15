@@ -23,25 +23,6 @@ namespace GildedRose
                 if (item.Quality < 50)
                 {
                     item.Quality = item.Quality + 1;
-
-                    if (item.Name == Backstage)
-                    {
-                        if (item.SellIn < 11)
-                        {
-                            if (item.Quality < 50)
-                            {
-                                item.Quality = item.Quality + 1;
-                            }
-                        }
-
-                        if (item.SellIn < 6)
-                        {
-                            if (item.Quality < 50)
-                            {
-                                item.Quality = item.Quality + 1;
-                            }
-                        }
-                    }
                 }
             }
             else if (item.Name == Backstage)
@@ -50,44 +31,31 @@ namespace GildedRose
                 {
                     item.Quality = item.Quality + 1;
 
-                    if (item.Name == Backstage)
+                    if (item.SellIn < 11)
                     {
-                        if (item.SellIn < 11)
+                        if (item.Quality < 50)
                         {
-                            if (item.Quality < 50)
-                            {
-                                item.Quality = item.Quality + 1;
-                            }
+                            item.Quality = item.Quality + 1;
                         }
+                    }
 
-                        if (item.SellIn < 6)
+                    if (item.SellIn < 6)
+                    {
+                        if (item.Quality < 50)
                         {
-                            if (item.Quality < 50)
-                            {
-                                item.Quality = item.Quality + 1;
-                            }
+                            item.Quality = item.Quality + 1;
                         }
                     }
                 }
             }
             else if  (item.Name == Sulfuras)
             {
-                if (item.Quality > 0)
-                {
-                    if (item.Name != Sulfuras)
-                    {
-                        item.Quality = item.Quality - 1;
-                    }
-                }
             }
             else
             {
                 if (item.Quality > 0)
                 {
-                    if (item.Name != Sulfuras)
-                    {
-                        item.Quality = item.Quality - 1;
-                    }
+                    item.Quality = item.Quality - 1;
                 }
             }
 
@@ -123,22 +91,12 @@ namespace GildedRose
                 }
                 else if (item.Name == Sulfuras)
                 {
-                    if (item.Quality > 0)
-                    {
-                        if (item.Name != Sulfuras)
-                        {
-                            item.Quality = item.Quality - 1;
-                        }
-                    }
                 }
                 else
                 {
                     if (item.Quality > 0)
                     {
-                        if (item.Name != Sulfuras)
-                        {
-                            item.Quality = item.Quality - 1;
-                        }
+                        item.Quality = item.Quality - 1;
                     }
                 }
             }
