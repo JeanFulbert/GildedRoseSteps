@@ -18,18 +18,7 @@ namespace GildedRose
 
         private static void UpdateQualityOf(Item item)
         {
-            if (item.Name != AgedBrie &&
-                item.Name != Backstage)
-            {
-                if (item.Quality > 0)
-                {
-                    if (item.Name != Sulfuras)
-                    {
-                        item.Quality = item.Quality - 1;
-                    }
-                }
-            }
-            else
+            if (item.Name == AgedBrie || item.Name == Backstage)
             {
                 if (item.Quality < 50)
                 {
@@ -52,6 +41,16 @@ namespace GildedRose
                                 item.Quality = item.Quality + 1;
                             }
                         }
+                    }
+                }
+            }
+            else
+            {
+                if (item.Quality > 0)
+                {
+                    if (item.Name != Sulfuras)
+                    {
+                        item.Quality = item.Quality - 1;
                     }
                 }
             }
