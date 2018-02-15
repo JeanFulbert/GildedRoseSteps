@@ -20,14 +20,55 @@ namespace GildedRose
         {
             if (item.Name == AgedBrie)
             {
+                UpdateAgedBrie(item);
+            }
+            else if (item.Name == Backstage)
+            {
+                UpdateBackstage(item);
+            }
+            else if  (item.Name == Sulfuras)
+            {
+                UpdateSulfuras(item);
+            }
+            else
+            {
+                UpdateNormal(item);
+            }
+        }
+
+        private static void UpdateAgedBrie(Item item)
+        {
+            if (item.Quality < 50)
+            {
+                item.Quality = item.Quality + 1;
+            }
+
+            item.SellIn = item.SellIn - 1;
+
+            if (item.SellIn < 0)
+            {
                 if (item.Quality < 50)
                 {
                     item.Quality = item.Quality + 1;
                 }
-                
-                item.SellIn = item.SellIn - 1;
-                
-                if (item.SellIn < 0)
+            }
+        }
+
+        private static void UpdateBackstage(Item item)
+        {
+            if (item.Quality < 50)
+            {
+                item.Quality = item.Quality + 1;
+
+                if (item.SellIn < 11)
+                {
+                    if (item.Quality < 50)
+                    {
+                        item.Quality = item.Quality + 1;
+                    }
+                }
+
+                if (item.SellIn < 6)
                 {
                     if (item.Quality < 50)
                     {
@@ -35,56 +76,36 @@ namespace GildedRose
                     }
                 }
             }
-            else if (item.Name == Backstage)
+
+            item.SellIn = item.SellIn - 1;
+
+
+            if (item.SellIn < 0)
             {
-                if (item.Quality < 50)
-                {
-                    item.Quality = item.Quality + 1;
-
-                    if (item.SellIn < 11)
-                    {
-                        if (item.Quality < 50)
-                        {
-                            item.Quality = item.Quality + 1;
-                        }
-                    }
-
-                    if (item.SellIn < 6)
-                    {
-                        if (item.Quality < 50)
-                        {
-                            item.Quality = item.Quality + 1;
-                        }
-                    }
-                }
-                
-                item.SellIn = item.SellIn - 1;
-                
-
-                if (item.SellIn < 0)
-                {
-                    item.Quality = item.Quality - item.Quality;
-                }
+                item.Quality = item.Quality - item.Quality;
             }
-            else if  (item.Name == Sulfuras)
+        }
+
+        private static void UpdateSulfuras(Item item)
+        {
+            // Do nothing because it's legen… wait for it …DARY !
+        }
+
+        private static void UpdateNormal(Item item)
+        {
+            if (item.Quality > 0)
             {
+                item.Quality = item.Quality - 1;
             }
-            else
+
+            item.SellIn = item.SellIn - 1;
+
+
+            if (item.SellIn < 0)
             {
                 if (item.Quality > 0)
                 {
                     item.Quality = item.Quality - 1;
-                }
-                
-                item.SellIn = item.SellIn - 1;
-
-
-                if (item.SellIn < 0)
-                {
-                    if (item.Quality > 0)
-                    {
-                        item.Quality = item.Quality - 1;
-                    }
                 }
             }
         }
