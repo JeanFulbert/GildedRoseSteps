@@ -91,7 +91,19 @@ namespace GildedRose
                 }
             }
 
-            if (item.Name != Sulfuras)
+
+            if (item.Name == AgedBrie)
+            {
+                item.SellIn = item.SellIn - 1;
+            }
+            else if (item.Name == Backstage)
+            {
+                item.SellIn = item.SellIn - 1;
+            }
+            else if (item.Name == Sulfuras)
+            {
+            }
+            else
             {
                 item.SellIn = item.SellIn - 1;
             }
