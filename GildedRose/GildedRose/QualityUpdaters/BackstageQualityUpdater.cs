@@ -4,25 +4,16 @@
     {
         public void UpdateQuality(Item item)
         {
-            if (item.Quality < 50)
+            IncreaseQuality(item);
+            
+            if (item.SellIn < 11)
             {
-                item.Quality = item.Quality + 1;
+                IncreaseQuality(item);
+            }
 
-                if (item.SellIn < 11)
-                {
-                    if (item.Quality < 50)
-                    {
-                        item.Quality = item.Quality + 1;
-                    }
-                }
-
-                if (item.SellIn < 6)
-                {
-                    if (item.Quality < 50)
-                    {
-                        item.Quality = item.Quality + 1;
-                    }
-                }
+            if (item.SellIn < 6)
+            {
+                IncreaseQuality(item);
             }
 
             item.SellIn = item.SellIn - 1;
@@ -31,6 +22,14 @@
             if (item.SellIn < 0)
             {
                 item.Quality = item.Quality - item.Quality;
+            }
+        }
+
+        private static void IncreaseQuality(Item item)
+        {
+            if (item.Quality < 50)
+            {
+                item.Quality = item.Quality + 1;
             }
         }
     }
