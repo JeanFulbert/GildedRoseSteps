@@ -48,6 +48,8 @@
     <Compile Include="QualityUpdater.cs" />
     <Compile Include="QualityUpdaters\AgedBrieQualityUpdater.cs" />
     <Compile Include="QualityUpdaters\BackstageQualityUpdater.cs" />
+    <Compile Include="QualityUpdaters\ConjuredQualityUpdater.cs" />
+    <Compile Include="QualityUpdaters\DecreaseQualityUpdater.cs" />
     <Compile Include="QualityUpdaters\IItemQualityUpdater.cs" />
     <Compile Include="QualityUpdaters\IncreaseQualityUpdater.cs" />
     <Compile Include="QualityUpdaters\NormalQualityUpdater.cs" />

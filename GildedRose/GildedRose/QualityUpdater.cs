@@ -7,6 +7,7 @@ namespace GildedRose
     {
         public const string AgedBrie = "Aged Brie";
         public const string Backstage = "Backstage passes to a TAFKAL80ETC concert";
+        public const string Conjured = "Conjured";
         public const string Sulfuras = "Sulfuras, Hand of Ragnaros";
         
         private readonly NormalQualityUpdater normalQualityUpdater = new NormalQualityUpdater();
@@ -17,6 +18,7 @@ namespace GildedRose
                 [AgedBrie] = new AgedBrieQualityUpdater(),
                 [Backstage] = new BackstageQualityUpdater(),
                 [Sulfuras] = new LegendaryQualityUpdater(),
+                [Conjured] = new ConjuredQualityUpdater(),
             };
         
         public void UpdateQuality(IList<Item> items)

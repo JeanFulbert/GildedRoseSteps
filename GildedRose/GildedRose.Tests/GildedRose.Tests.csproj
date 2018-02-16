@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="AgedBrieQuality.cs" />
     <Compile Include="BackstagePassQuality.cs" />
+    <Compile Include="ConjuredQuality.cs" />
     <Compile Include="LegendaryQuality.cs" />
     <Compile Include="NormalItemQuality.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

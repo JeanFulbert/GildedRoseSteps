@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using System.Linq.Expressions;
 using NUnit.Framework;
 
-namespace GildedRoseKata.Tests
+namespace GildedRose.Tests
 {
     [TestFixture]
     public class ConjuredQuality

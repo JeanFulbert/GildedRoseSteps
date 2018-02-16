@@ -1,6 +1,6 @@
 ﻿namespace GildedRose.QualityUpdaters
 {
-    public class NormalQualityUpdater : DecreaseQualityUpdater
+    public class ConjuredQualityUpdater : DecreaseQualityUpdater
     {
         public override void UpdateQuality(Item item)
         {
@@ -8,8 +8,8 @@
             
             var decreaseFactor =
                 item.SellIn < 0
-                    ? 2 
-                    : 1;
+                    ? 4 
+                    : 2;
             this.DecreaseQuality(item, decreaseFactor);
         }
     }
