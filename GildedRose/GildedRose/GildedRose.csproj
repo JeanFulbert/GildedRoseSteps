@@ -49,6 +49,7 @@
     <Compile Include="QualityUpdaters\AgedBrieQualityUpdater.cs" />
     <Compile Include="QualityUpdaters\BackstageQualityUpdater.cs" />
     <Compile Include="QualityUpdaters\IItemQualityUpdater.cs" />
+    <Compile Include="QualityUpdaters\IncreaseQualityUpdater.cs" />
     <Compile Include="QualityUpdaters\NormalQualityUpdater.cs" />
     <Compile Include="QualityUpdaters\LegendaryQualityUpdater.cs" />
   </ItemGroup>

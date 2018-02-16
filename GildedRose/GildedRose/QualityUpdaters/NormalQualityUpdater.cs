@@ -1,13 +1,12 @@
 ﻿namespace GildedRose.QualityUpdaters
 {
-    public class NormalQualityUpdater :IItemQualityUpdater
+    public class NormalQualityUpdater : IItemQualityUpdater
     {
         public void UpdateQuality(Item item)
         {
             DecreaseQuality(item);
 
             item.SellIn = item.SellIn - 1;
-
 
             if (item.SellIn < 0)
             {
